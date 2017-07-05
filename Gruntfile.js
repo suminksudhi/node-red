@@ -136,7 +136,8 @@ module.exports = function(grunt) {
                     "editor/js/ui/diff.js",
                     "editor/js/ui/keyboard.js",
                     "editor/js/ui/workspaces.js",
-                    "editor/js/ui/view.js",
+                    //"editor/js/ui/view.js",
+                    "editor/js/ui/view1.js",
                     "editor/js/ui/sidebar.js",
                     "editor/js/ui/palette.js",
                     "editor/js/ui/tab-info.js",
@@ -312,8 +313,20 @@ module.exports = function(grunt) {
                 files:[
                     {
                         src: 'editor/js/main.js',
-                        dest: 'public/red/main.js'
+                        dest: 'public/red/main.min.js'
                     },
+                    {
+                         src: 'public/red/red.js',
+                         dest: 'public/red/red.min.js'
+                    },
+    {
+            src: 'editor/vendor/jsonata/mode-jsonata.js',
+            dest: 'public/vendor/ace/mode-jsonata.js'
+    },
+    {
+            src: 'public/vendor/ace/snippets/jsonata.js',
+            dest: 'editor/vendor/jsonata/snippets-jsonata.js'
+    },
                     {
                         src: 'editor/js/keymap.json',
                         dest: 'public/red/keymap.json'
@@ -478,7 +491,9 @@ module.exports = function(grunt) {
 
     grunt.registerTask('build',
         'Builds editor content',
-        ['clean:build','jsonlint','concat:build','concat:vendor','copy:build','uglify:build','sass:build','attachCopyright']);
+        //['clean:build','jsonlint','concat:build','concat:vendor','copy:build','uglify:build','sass:build','attachCopyright']
+        ['clean:build','jsonlint','concat:build','concat:vendor','copy:build','sass:build','attachCopyright']
+    );
 
     grunt.registerTask('dev',
         'Developer mode: run node-red, watch for source changes and build/restart',
